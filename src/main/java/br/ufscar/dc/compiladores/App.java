@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 
-import br.ufscar.dc.compiladores.LAParser.ProgramaContext;
+import br.ufscar.dc.compiladores.TarParser.ProgramaContext;
 
 public class App {
 
@@ -19,23 +19,11 @@ public class App {
         String saida = args[1];
 
         CharStream cs = CharStreams.fromFileName(entrada);
-        LALexer lex = new LALexer(cs);
+        TarLexer lex = new TarLexer(cs);
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(saida))) {
             CommonTokenStream tokens = new CommonTokenStream(lex);
-            LAParser parser = new LAParser(tokens);
-            
-            /* Analisador sintatico */
-            // Registrando o error lister personalizado
-            MensagensCustomizadas msgs = new MensagensCustomizadas(pw, false);
-            //parser.removeErrorListeners();
-            parser.addErrorListener(msgs);
-            ProgramaContext arvore = parser.programa();
-
-            /* Analisador semantico */
-            TarSemantico as = new TarSemantico();
-            as.visitPrograma(arvore);
-            TarSemanticoUtils.errosSemanticos.forEach((s) -> pw.write(s));
+            TarParser parser = new TarParser(tokens);
 
             Token t = null;
             Integer line;
@@ -48,36 +36,11 @@ public class App {
                 // Obtendo token atual
                 token = t.getText();
                 // Obtendo tipo
-                regra = LALexer.VOCABULARY.getDisplayName(t.getType());
+                regra = TarLexer.VOCABULARY.getDispTaryName(t.getType());
 
-                // Condição em que algum token não foi identificado
-                if (regra.equals("SIMBOLO_DESCONHECIDO")) {
-                    erroLexico += ("Linha " + line + ": " + token + " - simbolo nao identificado\n");
-                }
-                // Condição em que um comentário { } não foi fechado corretamente
-                else if (regra.equals("COMENTARIO_N_FECHADO")) {
-                    erroLexico += ("Linha " + line + ": comentario nao fechado\n");
-                }
-                // Condição em que uma cadeia " " não foi fechada corretamente
-                else if (regra.equals("CADEIA_N_FECHADA")) {
-                    erroLexico += ("Linha " + line + ": cadeia literal nao fechada\n");
-                }
-                // Se não for um dos casos acima será impresso o token com sua regra neste
-                // formato
-                else {
-                    erroLexico += ("<\'" + token + "\'," + regra + ">\n");
-                }
+                
             }
             pw.write(erroLexico);
-            
-            /* Gerador de codigo */
-            if(TarSemanticoUtils.errosSemanticos.isEmpty() && erroLexico.isEmpty()) { //sintatico para a execuçao antes de chegar aqui
-                GeradorTar agc = new GeradorTar();
-                agc.visitPrograma(arvore);
-                pw.print(agc.saida.toString());
-            }
-            pw.close(); // Fechando arquivo escrito
-            
         } catch (IOException ex) {
         }
     }

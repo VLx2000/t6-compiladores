@@ -5,7 +5,7 @@ ARG2="java -jar $PWD/target/analisador-1.0-SNAPSHOT-jar-with-dependencies.jar"
 ARG3="gcc"
 ARG4="$PWD/tmp"
 ARG5="$PWD/casos-de-teste"
-ARG6="769699,769681,769734"
+ARG6="769726,769734"
 ARG7="$1"
 
 chmod +x $PWD/target/analisador-1.0-SNAPSHOT-jar-with-dependencies.jar

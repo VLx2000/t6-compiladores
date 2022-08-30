@@ -36,8 +36,16 @@ public class App {
                 // Obtendo token atual
                 token = t.getText();
                 // Obtendo tipo
-                regra = TarLexer.VOCABULARY.getDispTaryName(t.getType());
+                regra = TarLexer.VOCABULARY.getDisplayName(t.getType());
 
+                // Condição em que algum token não foi identificado
+                if (regra.equals("UNKNOWN")) {
+                    erroLexico += ("Linha " + line + ": " + token + " - simbolo nao identificado\n");
+                }
+                else {
+                    erroLexico += ("<\'" + token + "\'," + regra + ">\n");
+                }
+                pw.write(erroLexico);
                 
             }
             pw.write(erroLexico);

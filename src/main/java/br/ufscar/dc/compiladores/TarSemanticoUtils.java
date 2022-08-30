@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.antlr.v4.runtime.Token;
 
-public class LASemanticoUtils {
+public class TarSemanticoUtils {
     public static List<String> errosSemanticos = new ArrayList<>();
     
     public static void adicionarErroSemantico(Token t, String mensagem) {

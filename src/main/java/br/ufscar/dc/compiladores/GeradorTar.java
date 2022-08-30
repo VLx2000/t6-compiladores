@@ -1,11 +1,11 @@
 package br.ufscar.dc.compiladores;
 
-public class LAGeradorC extends LABaseVisitor<Void> {
+public class GeradorTar extends LABaseVisitor<Void> {
 
     StringBuilder saida;
     TabelaDeSimbolos tabela;
 
-    public LAGeradorC() {
+    public GeradorTar() {
         saida = new StringBuilder();
         this.tabela = new TabelaDeSimbolos();
     }

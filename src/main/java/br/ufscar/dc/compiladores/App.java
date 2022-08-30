@@ -33,9 +33,9 @@ public class App {
             ProgramaContext arvore = parser.programa();
 
             /* Analisador semantico */
-            LASemantico as = new LASemantico();
+            TarSemantico as = new TarSemantico();
             as.visitPrograma(arvore);
-            LASemanticoUtils.errosSemanticos.forEach((s) -> pw.write(s));
+            TarSemanticoUtils.errosSemanticos.forEach((s) -> pw.write(s));
 
             Token t = null;
             Integer line;
@@ -71,8 +71,8 @@ public class App {
             pw.write(erroLexico);
             
             /* Gerador de codigo */
-            if(LASemanticoUtils.errosSemanticos.isEmpty() && erroLexico.isEmpty()) { //sintatico para a execuçao antes de chegar aqui
-                LAGeradorC agc = new LAGeradorC();
+            if(TarSemanticoUtils.errosSemanticos.isEmpty() && erroLexico.isEmpty()) { //sintatico para a execuçao antes de chegar aqui
+                GeradorTar agc = new GeradorTar();
                 agc.visitPrograma(arvore);
                 pw.print(agc.saida.toString());
             }

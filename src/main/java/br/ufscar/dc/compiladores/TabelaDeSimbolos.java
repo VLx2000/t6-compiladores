@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TabelaDeSimbolos {
-    public enum TipoLA {
+    public enum TipoTar {
 
     }
     
     class EntradaTabelaDeSimbolos {
         String nome;
-        TipoLA tipo;
+        TipoTar tipo;
         TabelaDeSimbolos tipo_registro;
 
-        private EntradaTabelaDeSimbolos(String nome, TipoLA tipo) {
+        private EntradaTabelaDeSimbolos(String nome, TipoTar tipo) {
             this.nome = nome;
             this.tipo = tipo;
             this.tipo_registro  = null;
@@ -26,7 +26,7 @@ public class TabelaDeSimbolos {
         this.tabela = new HashMap<>();
     }
     
-    public void adicionar(String nome, TipoLA tipo) {
+    public void adicionar(String nome, TipoTar tipo) {
         tabela.put(nome, new EntradaTabelaDeSimbolos(nome, tipo));
     }
     
@@ -35,7 +35,7 @@ public class TabelaDeSimbolos {
         return tabela.containsKey(nome);
     }
     
-    public TipoLA verificar(String nome) {
+    public TipoTar verificar(String nome) {
         return tabela.get(nome).tipo;
     }
     public EntradaTabelaDeSimbolos getVariavel(String nome){

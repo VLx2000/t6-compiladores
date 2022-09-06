@@ -1,6 +1,6 @@
 grammar Tar;
 
-programa: acao acao*;
+programa: acao+ EOF;
 
 acao: comprimir | extrair;
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import org.antlr.v4.runtime.CommonTokenStream;
+// import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -20,7 +20,8 @@ public class App {
         TarLexer lex = new TarLexer(cs);
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(saida))) {
-            CommonTokenStream tokens = new CommonTokenStream(lex);
+            
+            // CommonTokenStream tokens = new CommonTokenStream(lex);
             // TarParser parser = new TarParser(tokens);
 
             Token t = null;

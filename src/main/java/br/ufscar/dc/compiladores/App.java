@@ -44,9 +44,7 @@ public class App {
                 }
                 else {
                     erroLexico += ("<\'" + token + "\'," + regra + ">\n");
-                }
-                pw.write(erroLexico);
-                
+                }                
             }
             pw.write(erroLexico);
         } catch (IOException ex) {

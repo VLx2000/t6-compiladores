@@ -1,12 +1,20 @@
 grammar Tar;
 
-programa
-	:	.;
+programa:
+	acao acao*;
+
+acao: 
+	comprimir | extrair;
+
+comprimir: 'COMPRIMIR' 'ARQUIVO' 'PARA' 'TAR';
+
+extrair: 'EXTRAIR' 'ARQUIVO' 'PARA' 'TAR';
+
+EXTRAIR:
+	'EXTRAIR';
 
 KEYWORD:
-	'DESCOMPRIMIR'
-	| 'COMPRIMIR'
-	| 'VERIFICAR'
+	'VERIFICAR'
 	| 'LISTAR'
 	| 'ARQUIVO'
 	| 'TIPO'
@@ -18,7 +26,9 @@ VARIABLE: ('a' ..'z' | 'A' ..'Z') (
 		| '0' ..'9'
 		| '_'
 	)*;
-ARQUIVO: VARIABLE '.' TIPO;
+
+TAR: VARIABLE '.' TIPO;
+ARQUIVO: VARIABLE '.' VARIABLE;
 TIPO: 'tar' | 'tar.gz' | 'tar.bz2';
 
 WS: ( ' ' | '\t' | '\r' | '\n') {skip();};

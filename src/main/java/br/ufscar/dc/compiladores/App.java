@@ -21,9 +21,6 @@ public class App {
         TarLexer lex = new TarLexer(cs);
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(saida))) {
-            
-            // CommonTokenStream tokens = new CommonTokenStream(lex);
-            // TarParser parser = new TarParser(tokens);
 
             Token t = null;
             Integer line;
@@ -55,7 +52,7 @@ public class App {
 
                 // Registrando o error lister personalizado
                 MensagensCustomizadas msgs = new MensagensCustomizadas(pw, false);
-                //parser.removeErrorListeners();
+                parser.removeErrorListeners();
                 parser.addErrorListener(msgs);
 
                 parser.programa();

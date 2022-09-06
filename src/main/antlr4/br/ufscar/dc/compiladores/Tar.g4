@@ -20,7 +20,7 @@ VARIABLE: ('a' ..'z' | 'A' ..'Z') (
 
 TAR: VARIABLE '.' TIPO;
 ARQUIVO: VARIABLE '.' VARIABLE;
-DIRETORIO: VARIABLE ('/' VARIABLE)*;
+DIRETORIO: VARIABLE '/' VARIABLE*;
 
 TIPO: 'tar' | 'tar.gz' | 'tar.bz2';
 

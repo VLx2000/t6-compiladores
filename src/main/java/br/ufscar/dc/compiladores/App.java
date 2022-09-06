@@ -8,6 +8,8 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
+import br.ufscar.dc.compiladores.TarParser.ProgramaContext;
+
 public class App {
 
     public static void main(String args[]) throws IOException {
@@ -22,7 +24,14 @@ public class App {
 
             CommonTokenStream tokens = new CommonTokenStream(lex);
             TarParser parser = new TarParser(tokens);
-            parser.programa();
+            ProgramaContext arvore = parser.programa();
+            TarSemantico as = new TarSemantico();
+/*             as.visitPrograma(arvore);
+            TarSemanticoUtils.errosSemanticos.forEach((s) -> pw.write(s));
+ */
+            GeradorTar agc = new GeradorTar();
+            agc.visitPrograma(arvore);
+            pw.print(agc.saida.toString());
         } catch (IOException ex) {
         }
     }

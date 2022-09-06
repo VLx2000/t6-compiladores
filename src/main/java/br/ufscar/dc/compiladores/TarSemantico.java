@@ -29,6 +29,7 @@ public class TarSemantico extends TarBaseVisitor<Void> {
         for(var arq: ctx.ARQUIVO()) {
             String currArq = arq.getText();
             if(files.contains(currArq)) {
+                System.out.println("aquiii");
                 TarSemanticoUtils.adicionarErroSemantico(ctx.start, currArq + " apareceu mais de uma vez.");
             } else {
                 files.add(currArq);

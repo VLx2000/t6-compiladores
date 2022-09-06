@@ -9,8 +9,6 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 
-import br.ufscar.dc.compiladores.TarParser.ProgramaContext;
-
 public class App {
 
     public static void main(String args[]) throws IOException {
@@ -23,7 +21,7 @@ public class App {
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(saida))) {
             CommonTokenStream tokens = new CommonTokenStream(lex);
-            TarParser parser = new TarParser(tokens);
+            // TarParser parser = new TarParser(tokens);
 
             Token t = null;
             Integer line;

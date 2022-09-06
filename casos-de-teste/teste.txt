@@ -1,1 +1,1 @@
-EXTRAIR tar.tar
+EXTRAIR tar.tar tar2.tar ARQUIV a1.file a2.file PARA DIRETORIO dir

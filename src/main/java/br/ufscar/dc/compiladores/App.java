@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 
 public class App {
 
@@ -44,6 +45,26 @@ public class App {
                 else {
                     erroLexico += ("<\'" + token + "\'," + regra + ">\n");
                 }                
+            }
+            if (erroLexico.isEmpty()) {
+                // Resetando fluxo de tokens para a análise sintática
+                lex.reset();
+                
+                CommonTokenStream tokens = new CommonTokenStream(lex);
+                TarParser parser = new TarParser(tokens);
+
+                // Registrando o error lister personalizado
+                MensagensCustomizadas msgs = new MensagensCustomizadas(pw, false);
+                //parser.removeErrorListeners();
+                parser.addErrorListener(msgs);
+
+                parser.programa();
+            }
+            
+            if (!erroLexico.isEmpty()) {
+                pw.write(erroLexico);
+                pw.write("Fim da compilacao\n");
+                pw.close(); // Fechando arquivo escrito
             }
             pw.write(erroLexico);
         } catch (IOException ex) {

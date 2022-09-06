@@ -1,2 +1,9 @@
 <'EXTRAIR','EXTRAIR'>
 <'tar.tar',TAR>
+<'tar2.tar',TAR>
+<'ARQUIV',VARIABLE>
+<'a1.file',ARQUIVO>
+<'a2.file',ARQUIVO>
+<'PARA DIRETORIO','PARA DIRETORIO'>
+<'dir',VARIABLE>
+Fim da compilacao

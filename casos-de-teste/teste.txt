@@ -1,1 +1,1 @@
-COMPRIMIR arquivo1.img arquivo2.txt PARA novoarquivo.tar.gz
+EXTRAIR tar.tar

@@ -2,9 +2,7 @@ grammar Tar;
 
 programa: acao acao*;
 
-acao: comprimir | extrair | type_switch;
-
-type_switch: 'TIPO' TIPO;
+acao: comprimir | extrair;
 
 comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 

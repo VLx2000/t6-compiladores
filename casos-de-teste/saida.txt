@@ -1,5 +1,2 @@
-<'COMPRIMIR','COMPRIMIR'>
-<'arquivo1.img',ARQUIVO>
-<'arquivo2.txt',ARQUIVO>
-<'PARA','PARA'>
-<'novoarquivo.tar.gz',TAR>
+<'EXTRAIR','EXTRAIR'>
+<'tar.tar',TAR>

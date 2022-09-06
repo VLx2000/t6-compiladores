@@ -6,16 +6,16 @@ acao: comprimir | extrair;
 
 comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 
-extrair: 'EXTRAIR' TAR 'ARQUIVOS' ARQUIVO+ 'PARA DIRETORIO' DIRETORIO
-		|'EXTRAIR' TAR ('PARA DIRETORIO' DIRETORIO)?;
+extrair: 'EXTRAIR' TAR ('SOMENTE' ARQUIVO+)? ('PARA' DIRETORIO)?;
 
-KEYWORD: 'VERIFICAR' | 'LISTAR' | 'ARQUIVO' | 'TIPO' | 'PARA';
+KEYWORD: 'VERIFICAR' | 'LISTAR' | 'ARQUIVO' | 'TIPO' | 'PARA' | 'SOMENTE';
 
 VARIABLE: ('a' ..'z' | 'A' ..'Z') (
 		'a' ..'z'
 		| 'A' ..'Z'
 		| '0' ..'9'
 		| '_'
+		| '-'
 	)*;
 
 TAR: VARIABLE '.' TIPO;

@@ -1,0 +1,6 @@
+COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
+COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
+EXTRAIR teste.tar.gz
+EXTRAIR teste.tar.gz SOMENTE a1.txt
+EXTRAIR teste.tar.gz PARA casos-de-teste/
+EXTRAIR teste.tar.gz SOMENTE a1.txt PARA casos-de-teste/

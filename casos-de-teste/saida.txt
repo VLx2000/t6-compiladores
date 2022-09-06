@@ -1,1 +1,1 @@
-tar -xdir/ a1.file a2.filetar.tar
+tar -czvf teste.tar.gz a1.txt a2.txt a3.txt

@@ -1,1 +1,1 @@
-tar -tvf teste.tar.xz
+tar -xzvf teste.tar.gz a1.txt -C dir/

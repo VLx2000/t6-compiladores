@@ -1,1 +1,1 @@
-LISTAR teste.tar.xz
+EXTRAIR teste.tar.gz SOMENTE a1.txt PARA dir/

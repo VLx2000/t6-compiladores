@@ -26,9 +26,13 @@ public class App {
             TarParser parser = new TarParser(tokens);
             ProgramaContext arvore = parser.programa();
             TarSemantico as = new TarSemantico();
-/*             as.visitPrograma(arvore);
+            as.visitPrograma(arvore);
             TarSemanticoUtils.errosSemanticos.forEach((s) -> pw.write(s));
- */
+
+            if(TarSemanticoUtils.errosSemanticos.size() > 0) {
+                return;
+            }
+
             GeradorTar agc = new GeradorTar();
             agc.visitPrograma(arvore);
             pw.print(agc.saida.toString());

@@ -2,7 +2,7 @@ grammar Tar;
 
 programa: acao+ EOF;
 
-acao: comprimir | extrair | tamanho | listar;
+acao: comprimir | extrair | tamanho | listar | adicionar;
 
 comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 
@@ -11,6 +11,8 @@ extrair: 'EXTRAIR' TAR ('SOMENTE' ARQUIVO+)? ('PARA' DIRETORIO)?;
 listar: 'LISTAR' TAR;
 
 tamanho: 'TAMANHO' TAR;
+
+adicionar: 'ADICIONAR' ARQUIVO+ 'PARA' TAR;
 
 KEYWORD: 'VERIFICAR' | 'LISTAR' | 'ARQUIVO' | 'TIPO' | 'PARA' | 'SOMENTE';
 

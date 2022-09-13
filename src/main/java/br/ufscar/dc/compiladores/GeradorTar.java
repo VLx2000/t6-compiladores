@@ -3,6 +3,7 @@ package br.ufscar.dc.compiladores;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import br.ufscar.dc.compiladores.TarParser.AcaoContext;
+import br.ufscar.dc.compiladores.TarParser.AdicionarContext;
 import br.ufscar.dc.compiladores.TarParser.ListarContext;
 import br.ufscar.dc.compiladores.TarParser.TamanhoContext;
 
@@ -38,6 +39,8 @@ public class GeradorTar extends TarBaseVisitor<Void> {
                 visitTamanho(acao.tamanho());
             }  else if (acao.listar() != null) {
                 visitListar(acao.listar());
+            }  else if (acao.adicionar() != null) {
+                visitAdicionar(acao.adicionar());
             } 
         }
         return null;
@@ -78,5 +81,13 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         saida.append(ctx.TAR().getText());
         saida.append(" | wc -c");
         return super.visitTamanho(ctx);
+    }
+
+    @Override
+    public Void visitAdicionar(AdicionarContext ctx) {
+        saida.append("rvf ");
+        saida.append(ctx.TAR().getText());
+        ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
+        return super.visitAdicionar(ctx);
     }
 }

@@ -3,6 +3,8 @@ package br.ufscar.dc.compiladores;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import br.ufscar.dc.compiladores.TarParser.AcaoContext;
+import br.ufscar.dc.compiladores.TarParser.ListarContext;
+import br.ufscar.dc.compiladores.TarParser.TamanhoContext;
 
 public class GeradorTar extends TarBaseVisitor<Void> {
     StringBuilder saida;
@@ -16,6 +18,8 @@ public class GeradorTar extends TarBaseVisitor<Void> {
             saida.append("z");
         else if (tar.getText().contains("tar.bz2"))
             saida.append("j");
+        else if (tar.getText().contains("tar.xz"))
+            saida.append("J");
         saida.append("vf");
         //-v : exibe o progresso de criação no terminal;
         //-f : nome do arquivo
@@ -30,7 +34,11 @@ public class GeradorTar extends TarBaseVisitor<Void> {
                 visitComprimir(acao.comprimir());
             } else if (acao.extrair() != null) {
                 visitExtrair(acao.extrair());
-            }
+            }  else if (acao.tamanho() != null) {
+                visitTamanho(acao.tamanho());
+            }  else if (acao.listar() != null) {
+                visitListar(acao.listar());
+            } 
         }
         return null;
     }
@@ -55,5 +63,20 @@ public class GeradorTar extends TarBaseVisitor<Void> {
             saida.append(ctx.DIRETORIO().getText());
         }
         return null;
+    }
+
+    @Override
+    public Void visitListar(ListarContext ctx) {
+        saida.append("tvf ");
+        saida.append(ctx.TAR().getText());
+        return super.visitListar(ctx);
+    }
+
+    @Override
+    public Void visitTamanho(TamanhoContext ctx) {
+        saida.append("czf - ");
+        saida.append(ctx.TAR().getText());
+        saida.append(" | wc -c");
+        return super.visitTamanho(ctx);
     }
 }

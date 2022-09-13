@@ -2,7 +2,7 @@ grammar Tar;
 
 programa: acao+ EOF;
 
-acao: comprimir | extrair;
+acao: comprimir | extrair | tamanho | listar;
 
 comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 
@@ -26,7 +26,7 @@ TAR: VARIABLE '.' TIPO;
 ARQUIVO: VARIABLE '.' VARIABLE;
 DIRETORIO: VARIABLE '/' VARIABLE*;
 
-TIPO: 'tar' | 'tar.gz' | 'tar.bz2';
+TIPO: 'tar' | 'tar.gz' | 'tar.bz2' | 'tar.xz';
 
 WS: ( ' ' | '\t' | '\r' | '\n') {skip();};
 

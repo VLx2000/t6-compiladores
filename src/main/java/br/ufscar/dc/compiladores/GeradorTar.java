@@ -29,8 +29,8 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitPrograma(TarParser.ProgramaContext ctx) {
-        saida.append("tar -");
         for (AcaoContext acao : ctx.acao()) {
+            saida.append("tar -");
             if (acao.comprimir() != null) {
                 visitComprimir(acao.comprimir());
             } else if (acao.extrair() != null) {
@@ -42,6 +42,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
             }  else if (acao.adicionar() != null) {
                 visitAdicionar(acao.adicionar());
             } 
+            saida.append("\n");
         }
         return null;
     }
@@ -60,10 +61,12 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         saida.append("x");
         verificaTar(ctx.TAR());
         saida.append(" " + ctx.TAR().getText());
-        ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
         if (ctx.DIRETORIO() != null){
-            saida.append(" -C ");
-            saida.append(ctx.DIRETORIO().getText());
+            saida.append(" -C");
+            saida.append(" " + ctx.DIRETORIO().getText());
+            ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
+        } else {
+            ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
         }
         return null;
     }

@@ -1,1 +1,0 @@
-tar -xzvf teste.tar.gz a1.txt -C dir/

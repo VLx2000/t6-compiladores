@@ -7,8 +7,7 @@ acao: comprimir | extrair | tamanho | listar | adicionar;
 comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 
 extrair:
-	'EXTRAIR' TAR ('SOMENTE' ARQUIVO+)? ('PARA' DIRETORIO)?
-	| 'EXTRAIR' TAR 'ARQUIVOS' LIST_EXTRACT;
+	'EXTRAIR' TAR ('SOMENTE' ARQUIVO+)? ('PARA' DIRETORIO)?;
 
 listar: 'LISTAR' TAR;
 
@@ -31,9 +30,6 @@ VARIABLE: ('a' ..'z' | 'A' ..'Z') (
 		| '_'
 		| '-'
 	)*;
-
-LIST_EXTRACT:
-	ARQUIVO 'PARA' DIRETORIO ('E' ARQUIVO 'PARA' DIRETORIO)*;
 
 TAR: VARIABLE '.' TIPO;
 ARQUIVO: VARIABLE '.' VARIABLE;

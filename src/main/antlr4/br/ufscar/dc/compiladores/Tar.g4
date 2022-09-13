@@ -8,6 +8,10 @@ comprimir: 'COMPRIMIR' ARQUIVO+ 'PARA' TAR;
 
 extrair: 'EXTRAIR' TAR ('SOMENTE' ARQUIVO+)? ('PARA' DIRETORIO)?;
 
+listar: 'LISTAR' TAR;
+
+tamanho: 'TAMANHO' TAR;
+
 KEYWORD: 'VERIFICAR' | 'LISTAR' | 'ARQUIVO' | 'TIPO' | 'PARA' | 'SOMENTE';
 
 VARIABLE: ('a' ..'z' | 'A' ..'Z') (

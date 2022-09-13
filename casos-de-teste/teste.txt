@@ -1,1 +1,1 @@
-COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
+EXTRAIR teste.tar SOMENTE a1.txt a2.txt PARA dir/

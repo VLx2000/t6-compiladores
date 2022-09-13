@@ -13,7 +13,7 @@ public class TarSemantico extends TarBaseVisitor<Void> {
     }
 
     @Override
-    public Void visitAcao(TarParser.AcaoContext ctx){            
+    public Void visitAcao(TarParser.AcaoContext ctx) {
         return super.visitAcao(ctx);
     }
 
@@ -26,10 +26,9 @@ public class TarSemantico extends TarBaseVisitor<Void> {
     public Void visitExtrair(ExtrairContext ctx) {
         // TODO Auto-generated method stub
         ArrayList<String> files = new ArrayList<>();
-        for(var arq: ctx.ARQUIVO()) {
+        for (var arq : ctx.ARQUIVO()) {
             String currArq = arq.getText();
-            if(files.contains(currArq)) {
-                System.out.println("aquiii");
+            if (files.contains(currArq)) {
                 TarSemanticoUtils.adicionarErroSemantico(ctx.start, currArq + " apareceu mais de uma vez.");
             } else {
                 files.add(currArq);

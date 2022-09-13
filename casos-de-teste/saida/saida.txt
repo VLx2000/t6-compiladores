@@ -1,1 +1,0 @@
-tar -xzvf teste.tar.gz -C saida/ a1.txt a2.txt

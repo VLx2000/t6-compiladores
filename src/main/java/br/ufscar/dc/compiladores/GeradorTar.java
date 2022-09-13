@@ -64,10 +64,8 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         if (ctx.DIRETORIO() != null){
             saida.append(" -C");
             saida.append(" " + ctx.DIRETORIO().getText());
-            ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
-        } else {
-            ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
         }
+        ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));    
         return null;
     }
 

@@ -1,14 +1,2 @@
-COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
-COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
-COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.xz
+CONFIG NIVEL_VERBOSO, INTERATIVO, MANTER_PERMISSOES, FORMATO END_CONFIG
 EXTRAIR teste.tar
-EXTRAIR teste.tar.gz
-EXTRAIR teste.tar.xz
-EXTRAIR teste.tar.gz SOMENTE a1.txt
-EXTRAIR teste.tar.gz PARA casos-de-teste/
-EXTRAIR teste.tar.gz SOMENTE a1.txt PARA casos-de-teste/
-EXTRAIR teste.tar.gz SOMENTE a1.txt a2.txt PARA casos-de-teste/
-LISTAR teste.tar
-TAMANHO teste.tar
-ADICIONAR a1.txt PARA teste.tar
-ADICIONAR a1.txt a2.txt PARA teste.tar

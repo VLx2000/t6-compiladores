@@ -10,6 +10,6 @@ public class TarSemanticoUtils {
     
     public static void adicionarErroSemantico(Token t, String mensagem) {
         int linha = t.getLine();
-        errosSemanticos.add(String.format("Linha %d: %s", linha, mensagem));
+        errosSemanticos.add(String.format("Linha %d: %s \n", linha, mensagem));
     }
 }

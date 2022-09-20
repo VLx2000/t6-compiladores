@@ -4,31 +4,58 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import br.ufscar.dc.compiladores.TarParser.AcaoContext;
 import br.ufscar.dc.compiladores.TarParser.AdicionarContext;
+import br.ufscar.dc.compiladores.TarParser.ConfigsContext;
+import br.ufscar.dc.compiladores.TarParser.ConfiguracaoContext;
 import br.ufscar.dc.compiladores.TarParser.ListarContext;
 import br.ufscar.dc.compiladores.TarParser.TamanhoContext;
 
 public class GeradorTar extends TarBaseVisitor<Void> {
     StringBuilder saida;
+    ConfigurationFlags configs = new ConfigurationFlags();
 
     public GeradorTar() {
         saida = new StringBuilder();
     }
 
     public Void verificaTar(TerminalNode tar) {
+        //-v : exibe o progresso de criação no terminal;
+        //-f : nome do arquivo
+        
         if (tar.getText().contains("tar.gz"))
             saida.append("z");
         else if (tar.getText().contains("tar.bz2"))
             saida.append("j");
         else if (tar.getText().contains("tar.xz"))
             saida.append("J");
-        saida.append("vf");
-        //-v : exibe o progresso de criação no terminal;
-        //-f : nome do arquivo
+
+        if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
+            saida.append("v");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
+            saida.append("vv");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("3")) {
+            saida.append("vvv");
+        } 
+
+        if (configs.map.get("INTERATIVO") != null) {
+            saida.append("w");
+        } 
+
+        if (configs.map.get("MANTER_PERMISSOES") != null) {
+            saida.append("p");
+        } 
+        
+        if (configs.map.get("FORMATO") != null) {
+            saida.append(" --format=" + configs.map.get("FORMATO"));
+        }
+        saida.append(" -f");
         return null;
     }
 
     @Override
     public Void visitPrograma(TarParser.ProgramaContext ctx) {
+        if (ctx.configuracao() != null){
+            visitConfiguracao(ctx.configuracao());
+        }
         for (AcaoContext acao : ctx.acao()) {
             saida.append("tar -");
             if (acao.comprimir() != null) {
@@ -45,6 +72,26 @@ public class GeradorTar extends TarBaseVisitor<Void> {
             saida.append("\n");
         }
         return null;
+    }
+
+    @Override
+    public Void visitConfiguracao(ConfiguracaoContext ctx) {
+        ctx.configs().forEach(config -> visitConfigs(config));
+        return super.visitConfiguracao(ctx);
+    }
+
+    @Override
+    public Void visitConfigs(ConfigsContext ctx) {       
+        if (ctx.CONFIG_KEYS().getText().equals("NIVEL_VERBOSO")){
+            configs.map.put("NIVEL_VERBOSO", ctx.CONFIG_VALUES().getText());
+        } else if (ctx.CONFIG_KEYS().getText().equals("INTERATIVO")){
+            configs.map.put("INTERATIVO", "");
+        } else if (ctx.CONFIG_KEYS().getText().equals("MANTER_PERMISSOES")){
+            configs.map.put("MANTER_PERMISSOES", "");
+        } else if (ctx.CONFIG_KEYS().getText().equals("FORMATO")){
+            configs.map.put("FORMATO", ctx.CONFIG_VALUES().getText());
+        } 
+        return super.visitConfigs(ctx);
     }
 
     @Override

@@ -1,0 +1,1 @@
+ADICIONAR a1.txt PARA teste.tar

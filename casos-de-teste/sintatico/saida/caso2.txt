@@ -1,0 +1,1 @@
+line 2:0 extraneous input 'EXTRIR' expecting {<EOF>, 'COMPRIMIR', 'EXTRAIR', 'LISTAR', 'TAMANHO', 'ADICIONAR'}

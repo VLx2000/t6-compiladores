@@ -1,2 +1,2 @@
 COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
-EXTRIR teste.tar.gz PARA casos-de-teste
+EXTRAIR teste!.tar.gz PARA casos-de-teste/

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -19,9 +20,18 @@ public class App {
 
         CharStream cs = CharStreams.fromFileName(entrada);
         TarLexer lex = new TarLexer(cs);
-
+        Token token = null;
         try (PrintWriter pw = new PrintWriter(new FileWriter(saida))) {
-
+           
+            while ((token = lex.nextToken()).getType() != Token.EOF) {
+                String tipo = TarLexer.VOCABULARY.getDisplayName(token.getType());
+    
+                if(tipo.equals("UNKNOWN")){
+                    pw.write("Erro lexico proximo a linha " + token.getLine());
+                    return;
+                }             
+            }
+            lex.reset();
             CommonTokenStream tokens = new CommonTokenStream(lex);
             TarParser parser = new TarParser(tokens);
             ProgramaContext arvore = parser.programa();

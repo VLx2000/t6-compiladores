@@ -1,0 +1,1 @@
+line 1:0 mismatched input 'EXTRadAI' expecting {'CONFIG', 'COMPRIMIR', 'EXTRAIR', 'LISTAR', 'TAMANHO', 'ADICIONAR'}

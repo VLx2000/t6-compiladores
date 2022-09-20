@@ -1,0 +1,1 @@
+Linha 1: teste.tar.gz: nao e possivel ADICIONAR em arquivo compactado. Use somente arquivos '.tar'. 

@@ -1,0 +1,1 @@
+Linha 1: a1.txt apareceu mais de uma vez. 

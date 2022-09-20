@@ -76,15 +76,19 @@ public class TarSemantico extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitAdicionar(AdicionarContext ctx) {
-        var fileName = ctx.TAR().getText();
-        var splitFile = fileName.split("\\.");
+        if (ctx.TAR() != null) {
+            var fileName = ctx.TAR().getText();
+            var splitFile = fileName.split("\\.");
 
-        if (splitFile.length == 2 && splitFile[1].equals("tar")) {
-            return super.visitAdicionar(ctx);
+            if (splitFile.length == 2 && splitFile[1].equals("tar")) {
+                return super.visitAdicionar(ctx);
+            }
+            TarSemanticoUtils.adicionarErroSemantico(ctx.start,
+                    fileName + ": nao e possivel ADICIONAR em arquivo compactado. Use somente arquivos '.tar'.");
+        } else {
+            TarSemanticoUtils.adicionarErroSemantico(ctx.start,
+                    "Erro ao ADICIONAR em arquivo compactado. Use somente arquivos '.tar'.");
         }
-
-        TarSemanticoUtils.adicionarErroSemantico(ctx.start,
-                fileName + ": nao e possivel ADICIONAR em arquivo compactado. Use arquivos somente '.tar'.");
         return super.visitAdicionar(ctx);
     }
 }

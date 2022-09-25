@@ -1,0 +1,2 @@
+tar -czf - teste.tar | wc -c
+tar -rvf teste.tar a1.txt

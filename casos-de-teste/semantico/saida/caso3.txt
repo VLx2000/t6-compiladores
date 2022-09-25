@@ -1,0 +1,1 @@
+Linha 1: NIVEL_VERBOSO deve ter algum valor 

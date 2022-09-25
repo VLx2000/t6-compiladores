@@ -1,0 +1,2 @@
+TAMANHO teste.tar
+ADICIONAR a1.txt PARA teste.tar

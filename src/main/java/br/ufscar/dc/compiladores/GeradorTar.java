@@ -17,6 +17,17 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         saida = new StringBuilder();
     }
 
+    public Void verificaVerboso() {
+        if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
+            saida.append("v");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
+            saida.append("vv");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("3")) {
+            saida.append("vvv");
+        } 
+        return null;
+    }
+
     public Void verificaTar(TerminalNode tar) {
         //-v : exibe o progresso de criação no terminal;
         //-f : nome do arquivo
@@ -28,13 +39,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         else if (tar.getText().contains("tar.xz"))
             saida.append("J");
 
-        if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
-            saida.append("v");
-        } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
-            saida.append("vv");
-        } else if (configs.map.get("NIVEL_VERBOSO").equals("3")) {
-            saida.append("vvv");
-        } 
+        verificaVerboso();
 
         if (configs.map.get("INTERATIVO") != null) {
             saida.append("w");
@@ -47,6 +52,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         if (configs.map.get("FORMATO") != null) {
             saida.append(" --format=" + configs.map.get("FORMATO"));
         }
+
         saida.append(" -f");
         return null;
     }
@@ -118,7 +124,9 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitListar(ListarContext ctx) {
-        saida.append("tvf ");
+        saida.append("t");
+        verificaVerboso();
+        saida.append("f ");
         saida.append(ctx.TAR().getText());
         return super.visitListar(ctx);
     }
@@ -133,7 +141,9 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitAdicionar(AdicionarContext ctx) {
-        saida.append("rvf ");
+        saida.append("r");
+        verificaVerboso();
+        saida.append("f ");
         saida.append(ctx.TAR().getText());
         ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));
         return super.visitAdicionar(ctx);

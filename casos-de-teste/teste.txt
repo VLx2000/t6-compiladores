@@ -1,2 +1,4 @@
-COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
-EXTRAIR teste.tar.gz PARA casos-de-teste/
+CONFIG NIVEL_VERBOSO : 2 END_CONFIG
+COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
+EXTRAIR teste.tar.gz SOMENTE a1.txt
+LISTAR teste.tar.gz

@@ -1,2 +1,3 @@
-tar -cvvv -f teste.tar a1.txt a2.txt a3.txt
-tar -xzvvv -f teste.tar.gz -C casos-de-teste/
+tar -czvv -f teste.tar.gz a1.txt a2.txt a3.txt
+tar -xzvv -f teste.tar.gz a1.txt
+tar -tvvf teste.tar.gz

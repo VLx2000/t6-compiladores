@@ -18,6 +18,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
     }
 
     public Void verificaVerboso() {
+        // adiciona a flag que indica o quao verboso o programa sera de acordo com a configuração do compilador
         if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
             saida.append("v");
         } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
@@ -153,6 +154,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitListar(ListarContext ctx) {
+        // adiciona as flags especificar da acao listar
         saida.append("t");
         verificaVerboso();
         saida.append("f ");
@@ -173,6 +175,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitAdicionar(AdicionarContext ctx) {
+        // adiciona as flags especificar da acao adicionar
         saida.append("r");
         verificaVerboso();
         saida.append("f ");

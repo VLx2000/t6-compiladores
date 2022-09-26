@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 CONFIG NIVEL_VERBOSO : 0, INTERATIVO, FORMATO : posix END_CONFIG
 COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
 LISTAR teste.tar
 TAMANHO teste.tar
+=======
+CONFIG NIVEL_VERBOSO : 2 END_CONFIG
+COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
+EXTRAIR teste.tar.gz SOMENTE a1.txt
+LISTAR teste.tar.gz
+>>>>>>> 6478746aa850737cbc09a4046a0652d080b380cc

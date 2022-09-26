@@ -17,6 +17,17 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         saida = new StringBuilder();
     }
 
+    public Void verificaVerboso() {
+        if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
+            saida.append("v");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
+            saida.append("vv");
+        } else if (configs.map.get("NIVEL_VERBOSO").equals("3")) {
+            saida.append("vvv");
+        } 
+        return null;
+    }
+
     public Void verificaTar(TerminalNode tar) {
         //-v : exibe o progresso de criação no terminal;
         //-f : nome do arquivo
@@ -35,14 +46,7 @@ public class GeradorTar extends TarBaseVisitor<Void> {
         else if (tar.getText().contains("tar.xz"))
             saida.append("J");
 
-        // configura as flags que determinam o nível de 'verbosidade'
-        if (configs.map.get("NIVEL_VERBOSO").equals("1")) {
-            saida.append("v");
-        } else if (configs.map.get("NIVEL_VERBOSO").equals("2")) {
-            saida.append("vv");
-        } else if (configs.map.get("NIVEL_VERBOSO").equals("3")) {
-            saida.append("vvv");
-        } 
+        verificaVerboso();
 
         // adiciona as flags caso o modo INTERATIVO seja configurado
         if (configs.map.get("INTERATIVO") != null) {
@@ -149,9 +153,9 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitListar(ListarContext ctx) {
-        // flags utilizadas para a listagem de arquivos de um arquivo TAR
-        saida.append("tvf ");
-        // especifica o nome do arquivo TAR
+        saida.append("t");
+        verificaVerboso();
+        saida.append("f ");
         saida.append(ctx.TAR().getText());
         return super.visitListar(ctx);
     }
@@ -169,9 +173,9 @@ public class GeradorTar extends TarBaseVisitor<Void> {
 
     @Override
     public Void visitAdicionar(AdicionarContext ctx) {
-        // flags utilizadas para a adição de arquivos a um arquivo TAR
-        saida.append("rvf ");
-        // especifica o nome do arquivo TAR
+        saida.append("r");
+        verificaVerboso();
+        saida.append("f ");
         saida.append(ctx.TAR().getText());
         // lista os arquivos que devem ser adicionados
         ctx.ARQUIVO().forEach(arquivo -> saida.append(" " + arquivo.getText()));

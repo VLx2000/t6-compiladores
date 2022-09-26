@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 tar -cw --format=posix -f teste.tar a1.txt a2.txt a3.txt
 tar -tvf teste.tar
 tar -czf - teste.tar | wc -c
+=======
+tar -czvv -f teste.tar.gz a1.txt a2.txt a3.txt
+tar -xzvv -f teste.tar.gz a1.txt
+tar -tvvf teste.tar.gz
+>>>>>>> 6478746aa850737cbc09a4046a0652d080b380cc

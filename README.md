@@ -39,18 +39,17 @@ COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
 
 ##### 2. Comando EXTRAIR
 O comando **EXTRAIR** realiza a extração de arquivos comprimidos e possui algumas variantes, e são elas **(a)** sua forma simples, **(b)** sua forma que específica os arquivos a serem descompactados e **(c)** sua forma que especifíca o diretório para qual os arquivos descompactados devem ir
-
-Exemplo para o caso **(a)**:
+- **(a)**:
 ```
 EXTRAIR teste.tar
 ```
 
-Exemplo para o caso **(b)**:
+- **(b)**:
 ```
 EXTRAIR teste.tar.gz SOMENTE a1.txt
 ```
 
-Exemplo para o caso **(c)**:
+- **(c)**:
 ```
 EXTRAIR teste.tar.gz PARA casos-de-teste/
 EXTRAIR teste.tar.gz SOMENTE a1.txt a2.txt PARA casos-de-teste/
@@ -78,6 +77,9 @@ O comando é bem explicado a partir de exemplos, como abaixo:
 ADICIONAR a1.txt PARA teste.tar
 ADICIONAR a1.txt a2.txt PARA teste.tar.xz
 ```
+
+------------
+
 
 Além de suportar também alguns parâmetros para melhor uso:
 O que faz | Palavra

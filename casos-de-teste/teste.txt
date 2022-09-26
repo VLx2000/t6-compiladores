@@ -1,2 +1,4 @@
+CONFIG NIVEL_VERBOSO : 0, INTERATIVO, FORMATO : posix END_CONFIG
 COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
-EXTRAIR teste.tar.gz PARA casos-de-teste/
+LISTAR teste.tar
+TAMANHO teste.tar

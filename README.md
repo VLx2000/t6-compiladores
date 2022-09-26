@@ -97,7 +97,7 @@ CONFIG (um ou mais parâmetros aqui) END_CONFIG
 (açoes entre comprimir | extrair | tamanho | listar | adicionar)
 ```
 
-Ex:
+Ex.:
 ```
 CONFIG NIVEL_VERBOSO : 2 END_CONFIG
 COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar.gz
@@ -110,6 +110,20 @@ e, com isso, a saída seria a seguinte:
 tar -czvv -f teste.tar.gz a1.txt a2.txt a3.txt
 tar -xzvv -f teste.tar.gz a1.txt
 tar -tvvf teste.tar.gz
+```
+Ou ainda:
+```
+CONFIG NIVEL_VERBOSO : 0, INTERATIVO, FORMATO : posix END_CONFIG
+COMPRIMIR a1.txt a2.txt a3.txt PARA teste.tar
+LISTAR teste.tar
+TAMANHO teste.tar
+```
+
+que produz o seguinte compilado:
+```
+tar -cw --format=posix -f teste.tar a1.txt a2.txt a3.txt
+tar -tvf teste.tar
+tar -czf - teste.tar | wc -c
 ```
 
 ## Dependências

@@ -84,10 +84,10 @@ ADICIONAR a1.txt a2.txt PARA teste.tar.xz
 Além de suportar também alguns parâmetros para melhor uso:
 O que faz | Palavra
 --------- | ---------
-Nível de informações durante execução | NIVEL_VERBOSO : (0 à 3)
-Pedir confirmação para ações | INTERATIVO (flag booleana)
-Manter permissões de grupo, acesso e proprietário dos arquivos | MANTER_PERMISSOES (flag booleana) 
-Formato do arquivo | FORMATO : ('gnu', 'oldgnu', 'pax', 'posix', 'ustar', 'v7')
+Nível de informações durante execução | NIVEL_VERBOSO : (0 à 3), padrão 1
+Pedir confirmação para ações | INTERATIVO (flag booleana), padrão false
+Manter permissões de grupo, acesso e proprietário dos arquivos | MANTER_PERMISSOES (flag booleana), padrão false
+Formato do arquivo | FORMATO : ('gnu', 'oldgnu', 'pax', 'posix', 'ustar', 'v7'), padrão 'gnu'
 
 Nela, é possível gerar, à partir de parâmetros pré definidos, vários comandos de uma só vez
 

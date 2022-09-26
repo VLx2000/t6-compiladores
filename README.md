@@ -6,7 +6,7 @@
 - Victor Luís Aguilar Antunes 769734
 
 ### Descrição
-Tar é um aplicativo capaz de armazenar vários arquivos em um só. Muito utilizado em ambientes Linux, esse trabalho busca criar um compilador de uma linguagem mais acessível e de fácil uso, para os comandos tar.
+Tar é um aplicativo capaz de armazenar vários arquivos em um só. Muito utilizado em ambientes Linux, esse trabalho busca criar um compilador de uma linguagem mais acessível e de fácil uso, para os comandos tar. Além disso, também foi criada uma extensão do Visual Studio Code para dar suporte a linguagem aqui criada, denominada TarScript, e esta extensão é melhor documentada numa seção ao fim deste documento.
 
 ![meme tar](https://imgs.xkcd.com/comics/tar.png)
 
@@ -134,6 +134,14 @@ tar -czf - teste.tar | wc -c
 ```
 sudo apt install openjdk-11-jdk maven
 ```
+
+## Extensão VSCode TarScript
+Adicionalmente, também foi desenvolvida uma extensão para o VSCode que dá suporte a linguagem TarScript, permitindo uma melhor experiëncia para quem desenvolve programaas utilizando-a. 
+
+Pode-se obter a extensão via repositório GitHub no link abaixo:
+[TarScript VSCode Extension](https://github.com/eduardo-gualberto/TarScriptVSCE)
+
+Para mais detalhes sobre como instalar a extensão e torná-la utilizável, basta seguir as instruções fornecidas no GitHub da mesma.
 
 ### Para executar
 #### Adicione dentro de ```casos-de-teste/teste.txt``` os comandos que deseja compilar

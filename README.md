@@ -5,7 +5,7 @@
 - Eduardo dos Santos Gualberto 769726
 - Victor Luís Aguilar Antunes 769734
 
-### Descriçã0
+### Descrição
 Tar é um aplicativo capaz de armazenar vários arquivos em um só. Muito utilizado em ambientes Linux, esse trabalho busca criar um compilador de uma linguagem mais acessível e de fácil uso, para os comandos tar.
 
 ![meme tar](https://imgs.xkcd.com/comics/tar.png)

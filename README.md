@@ -12,7 +12,7 @@ Tar é um aplicativo capaz de armazenar vários arquivos em um só. Muito utiliz
 
 ### Vídeo com demonstração
 
-![video]()
+[Link para o vídeo](https://youtu.be/LyDT4SWcjmw)
 
 ### Sobre a linguagem
 A linguagem suporta os comandos mais usados do tar como:
@@ -130,7 +130,7 @@ tar -czf - teste.tar | wc -c
 - Java 11
 - Maven
 - GCC/MinGW
-## Ubuntu
+### Ubuntu
 ```
 sudo apt install openjdk-11-jdk maven
 ```
@@ -143,7 +143,11 @@ Pode-se obter a extensão via repositório GitHub no link abaixo:
 
 Para mais detalhes sobre como instalar a extensão e torná-la utilizável, basta seguir as instruções fornecidas no GitHub da mesma.
 
-### Para executar
+## Sobre casos de teste
+Em ```casos-de-teste/``` dentro das pastas ```lexico/```, ```sintatico/``` e ```semantico/```, há arquivos com o nome _erro, em que são esperados como saída, um erro de compilação (mostrando que suas respectivas verificações funcionam).
+> Considere executar os casos com os arquivos de teste que estão em ```casos-de-teste/```
+
+## Para executar
 #### Adicione dentro de ```casos-de-teste/teste.txt``` os comandos que deseja compilar
 #### Compile o programa
 ```

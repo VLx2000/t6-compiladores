@@ -1,0 +1,1 @@
+tar -czv -f teste.tar.xz a1.txt a2.txt a3.txt

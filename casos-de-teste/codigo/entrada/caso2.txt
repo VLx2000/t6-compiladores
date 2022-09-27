@@ -1,0 +1,1 @@
+EXTRAIR teste.tar.gz SOMENTE a1.txt PARA codigo/saida

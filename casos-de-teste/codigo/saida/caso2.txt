@@ -1,0 +1,1 @@
+tar -xzv -f teste.tar.gz -C codigo/saida a1.txt
